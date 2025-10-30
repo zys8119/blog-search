@@ -1,0 +1,6 @@
+auto-import.d.ts
+node_modules/
+components.d.ts
+.vs_code
+pnpm-lock.yaml
+dist/
