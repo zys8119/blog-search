@@ -1,30 +1,4 @@
-function markdownToFlatTree(md) {
-  const lines = md.split(/\r?\n/);
-  const result = [];
-  let current = null;
-
-  for (const line of lines) {
-    const heading = line.match(/^(#{1,6})\s+(.*)$/);
-    if (heading) {
-      // 遇到新标题，先把上一个存入结果
-      if (current) result.push(current);
-      current = {
-        title: `${heading[1]} ${heading[2].trim()}`,
-        value: "",
-      };
-    } else {
-      // 普通内容追加到当前标题
-      if (current) {
-        // 保留换行，便于格式化
-        current.value += (current.value ? "\n" : "") + line;
-      }
-    }
-  }
-
-  // 最后一个标题也要推入
-  if (current) result.push(current);
-  return result;
-}
+import { markdownToFlatTree } from "./test";
 const cmds: CMDS = {
   "--mdTitle": {
     message: "解析md大纲",

@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # 下载 blog.md（如果不存在）
-if [[ ! -f '$mdPath' ]]; then
-    curl -o $mdPath https://raw.githubusercontent.com/zys8119/Blog/refs/heads/master/README.md
-fi;
+curl -o $mdPath https://raw.githubusercontent.com/zys8119/Blog/refs/heads/master/README.md
 
 title=$(cat $mdPath | node $aPath --mdTitle | fzf --preview "cat $mdPath | node $aPath --md {}")
 
